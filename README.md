@@ -3,12 +3,18 @@
 This project is a robust end-to-end test automation framework using:
 
 ✅ Playwright for browser automation
+
 ✅ Cucumber for BDD (Gherkin syntax)
+
 ✅ TypeScript for static typing
+
 ✅ Node.js as the runtime
+
 ✅ Visual Studio Code for development
 
+
 🚀 Quickstart
+
 1. Prerequisites
 Visual Studio Code
 
