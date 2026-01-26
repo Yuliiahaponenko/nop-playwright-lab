@@ -1,68 +1,125 @@
-#nop-playwright-lab
+🧪 Playwright + Cucumber + TypeScript + Node.js Framework
 
-🧪 Playwright + TypeScript E2E Testing Framework
+This project is a robust end-to-end test automation framework using:
 
-This repository is my personal test automation lab using Playwright and TypeScript for end-to-end UI testing of web applications with readable, maintainable test scripts.
-
-🛠 Tech Stack
-
-✅ Playwright – Browser automation and test runner
-
-✅ TypeScript – Static typing and robust code
-
-✅ Node.js – Runtime environment
-
-✅ Visual Studio Code – Recommended editor
+✅ Playwright for browser automation
+✅ Cucumber for BDD (Gherkin syntax)
+✅ TypeScript for static typing
+✅ Node.js as the runtime
+✅ Visual Studio Code for development
 
 🚀 Quickstart
 1. Prerequisites
 Visual Studio Code
 
-Install VS Code from the official source.
+Download and install from the official website.
 
-Then install helpful extensions:
+After installing, open VSCode and install the official Playwright Test for VSCode extension:
 
-Playwright Test for VS Code
+Go to the Settings → Extensions tab
+(or press Ctrl+Shift+X / Cmd+Shift+X)
 
-Open Extensions (Ctrl+Shift+X / Cmd+Shift+X)
-
-Search for: Playwright Test
+Search for: Playwright Test for VSCode
 
 Publisher: Microsoft
+(Run Playwright tests in Visual Studio Code.)
 
-Install
+Install the extension
 
-Cucumber / Gherkin Support (optional if using BDD)
+Also, install the official Cucumber extension:
 
-Search for: Cucumber / Gherkin
+Go to the Settings → Extensions tab
+(or press Ctrl+Shift+X / Cmd+Shift+X)
 
-Install extensions to support feature syntax
+Search for: Cucumber
+
+Publisher: Cucumber
+(Cucumber for Visual Studio Code)
+
+Install the extension
 
 Node.js
+🪟 Windows
 
-Make sure Node.js is installed (LTS version recommended):
+Go to the official Node.js download page
 
-Check versions:
+Download the latest LTS version
+
+Run the installer
+
+Leave default settings checked (includes npm)
+
+Follow the prompts to complete installation
+
+Verify installation:
+
+node -v
+npm -v
+
+🍎 macOS
+
+Install Homebrew (if not installed):
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+
+Install Node.js:
+
+brew install node
+
+
+Verify installation:
 
 node -v
 npm -v
 
 Git
+🪟 Windows
 
-Verify that Git is installed:
+Go to the Git downloads page
+
+Download and run the installer
+
+Choose default options unless you have specific needs
+
+Verify installation:
 
 git --version
 
-2. Clone the Repository
+🍎 macOS
 
-In your terminal:
+Check if Git is already installed:
 
-git clone https://github.com/Yuliiahaponenko/nop-playwright-lab.git
-cd nop-playwright-lab
+git --version
+
+
+If not installed or needs update:
+
+brew install git
+
+2. Clone the Repo
+
+Setup your repository.
+
+[Option 1] In VSCode directly
+
+Click the Source Control icon on the left
+
+Select Clone Repository
+
+Paste repository URL
+
+Select a directory where the project will be located
+
+[Option 2] Or in the terminal
+cd your-projects-directory
+git clone https://github.com/vskryabin/typescript-playwright-bdd.git
+cd typescript-playwright-bdd
 
 3. Install Dependencies
+🍎 macOS
 
-Install project dependencies:
+In VSCode, open Terminal and run:
 
 npm install
 
@@ -71,54 +128,59 @@ Install Playwright browsers:
 
 npx playwright install
 
-4. Running Tests
-Run All Playwright Tests
+🪟 Windows
+
+Open PowerShell as Admin (Run as Administrator)
+
+Check current execution policy:
+
+Get-ExecutionPolicy
+
+
+If Restricted, change to RemoteSigned:
+
+Set-ExecutionPolicy RemoteSigned
+
+
+Validate that it changed:
+
+Get-ExecutionPolicy
+
+
+Then in VSCode, open Terminal and run:
+
+npm install
+
+
+Install Playwright browsers:
+
+npx playwright install
+
+4.1 Running BDD tests
+
+BDD Playwright tests:
+
+npm run bdd -- "@bdd1"
+
+4.2 Running Playwright tests
+
+Playwright tests:
+
 npx playwright test
-
-Run a Specific Test File
-npx playwright test path/to/test-file.spec.ts
-
-Run Tests with a Filter (e.g., by name or tag)
+npx playwright test tests/test.spec.ts
 npx playwright test -g "partial test name"
+npx playwright test -g "partial test name" -g "another partial test name"
+npx playwright test --grep-invert "excluded partial name"
 
-📊 View Reports
 
-After running tests, you can view the Playwright HTML report:
+Playwright report:
 
-npx playwright show-report
+npx playwright show-report test-reports
 
-🧩 Useful Commands
-
-Generate code (Playwright Codegen):
-
+More
+Codegen
 npx playwright codegen
 
+Playwright Documentation
 
-Run with headful mode (see browser interactions):
-
-npx playwright test --headed
-
-🗂 Project Structure (Example)
-nop-playwright-lab/
-├─ tests/
-│   ├─ example.spec.ts                # Example Playwright test file
-├─ playwright.config.ts               # Playwright configuration
-├─ package.json                      # NPM scripts & dependencies
-├─ tsconfig.json                     # TypeScript config
-
-
-Update this section if your actual repo structure differs.
-
-📚 Resources
-
-Playwright Official Docs – https://playwright.dev/docs/intro
-
-TypeScript Support in Playwright – https://playwright.dev/docs/test-typescript
-
-🚀 Tips for Success
-
-Keep test selectors robust and meaningful (use getByRole, getByLabel, etc.).
-
-Organize page actions into reusable helpers or Page Objects.
-
-Use Playwright’s built-in report and trace features to debug flakiness.
+https://playwright.dev/docs/intro
