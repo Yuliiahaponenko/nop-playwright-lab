@@ -1,0 +1,38 @@
+{
+  "testProducts": [
+    {
+      "name": "Laptop",
+      "category": "Computers",
+      "price": 1200.00,
+      "sku": "LAP001"
+    },
+    {
+      "name": "Phone",
+      "category": "Electronics",
+      "price": 800.00,
+      "sku": "PHN001"
+    },
+    {
+      "name": "Camera",
+      "category": "Electronics",
+      "price": 500.00,
+      "sku": "CAM001"
+    }
+  ],
+  "searchKeywords": [
+    "laptop",
+    "computer",
+    "phone",
+    "camera",
+    "electronics"
+  ],
+  "categories": [
+    "Computers",
+    "Electronics",
+    "Apparel",
+    "Digital downloads",
+    "Books",
+    "Jewelry",
+    "Gift Cards"
+  ]
+}

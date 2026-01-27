@@ -1,0 +1,41 @@
+{
+  "testCards": {
+    "validVisa": {
+      "cardNumber": "4111111111111111",
+      "cardHolder": "Test User",
+      "expirationMonth": "12",
+      "expirationYear": "2027",
+      "cvv": "123"
+    },
+    "validMastercard": {
+      "cardNumber": "5555555555554444",
+      "cardHolder": "Test User",
+      "expirationMonth": "12",
+      "expirationYear": "2027",
+      "cvv": "123"
+    }
+  },
+  "addresses": {
+    "usAddress": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "billing@example.com",
+      "country": "United States",
+      "state": "California",
+      "city": "Los Angeles",
+      "address1": "123 Test Street",
+      "zipCode": "90001",
+      "phoneNumber": "5551234567"
+    }
+  },
+  "shippingMethods": [
+    "Ground",
+    "Next Day Air",
+    "2nd Day Air"
+  ],
+  "paymentMethods": [
+    "Credit Card",
+    "Check / Money Order",
+    "Purchase Order"
+  ]
+}
