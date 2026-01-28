@@ -16,6 +16,12 @@ Given('I am logged in as a test user', async function(this: CustomWorld) {
   await page.locator('a[href="/customer/info"]').waitFor({ state: 'visible', timeout: 10000 });
 });
 
+When('I fill the registration email with a unique value', async function(this: CustomWorld) {
+  const page = await this.getPage();
+  const uniqueEmail = `testuser_${Date.now()}@example.com`;
+  await page.locator('#Email').fill(uniqueEmail);
+});
+
 When('I log out', async function(this: CustomWorld) {
   const page = await this.getPage();
   await page.locator('a[href="/logout"]').click();

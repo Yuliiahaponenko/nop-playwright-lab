@@ -7,8 +7,8 @@ Feature: Remove from Cart
     When I click element using css "#add-to-cart-button-4"
     And I wait for any element using css ".bar-notification.success" to be visible
     And I go to url "https://nop-qa.portnov.com/cart"
-    Then I should see element using css ".cart-item-row" to be visible
-    When I click element using css ".remove-from-cart input[type='checkbox']"
+    Then I wait for any element using css "table.cart tbody tr" to be visible
+    When I check the checkbox using css "input[name='removefromcart']"
     And I click element using css "button[name='updatecart']"
     Then I should see element using css ".no-data" to be visible
 
@@ -21,7 +21,7 @@ Feature: Remove from Cart
     And I click element using css "#add-to-cart-button-18"
     And I wait for any element using css ".bar-notification.success" to be visible
     When I go to url "https://nop-qa.portnov.com/cart"
-    Then I should see element using css ".cart-item-row" to be visible
-    When I click element using css ".cart-item-row:first-child .remove-from-cart input"
+    Then I wait for any element using css "table.cart tbody tr" to be visible
+    When I check the checkbox using css "input[name='removefromcart']"
     And I click element using css "button[name='updatecart']"
-    Then I should see element using css ".cart-item-row" to be visible
+    Then I wait for any element using css "table.cart tbody tr" to be visible

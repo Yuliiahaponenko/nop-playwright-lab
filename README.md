@@ -2,7 +2,11 @@
 
 🧪 **Playwright + Cucumber + TypeScript + Node.js Framework**
 
-This project is a robust end-to-end test automation framework for the **nopCommerce** e-commerce platform using:
+End-to-end test automation framework for the **nopCommerce** e-commerce platform: BDD (Cucumber/Gherkin) with Playwright and TypeScript, Page Object Model, structured test data, and CI/CD via GitHub Actions.
+
+**Scope:** 14 feature files, 37+ scenarios across auth, cart, checkout, products, and E2E flows.
+
+This project uses:
 
 ✅ **Playwright** for browser automation  
 ✅ **Cucumber** for BDD (Gherkin syntax)  
@@ -168,49 +172,12 @@ npm run bdd:file -- src/bdd/features/auth/login.feature
 ```
 Or in VS Code: open the `.feature` file → **Terminal → Run Task…** → **Run current BDD feature file**.
 
-### 4.2 Running Playwright Tests
+### 4.2 Playwright (optional)
 
-**Run all Playwright tests:**
+If you add Playwright spec files under `src/tests/`, you can run:
 ```bash
-npx playwright test
-```
-
-**Run specific test file:**
-```bash
-npx playwright test src/tests/auth/login.spec.ts
-npx playwright test src/tests/cart/addToCart.spec.ts
-```
-
-**Run tests by name pattern:**
-```bash
-npx playwright test -g "login"
-npx playwright test -g "registration"
-```
-
-**Run with multiple patterns:**
-```bash
-npx playwright test -g "login" -g "valid"
-```
-
-**Exclude tests:**
-```bash
-npx playwright test --grep-invert "excluded partial name"
-```
-
-**Run in headed mode (visible browser):**
-```bash
+npm test
 npx playwright test --headed
-```
-
-**Run in debug mode:**
-```bash
-npx playwright test --debug
-```
-
-### 4.3 Playwright Report
-
-**View HTML report:**
-```bash
 npx playwright show-report
 ```
 
@@ -223,70 +190,39 @@ nop-playwright-lab/
 ├── src/
 │   ├── bdd/                      # BDD Cucumber Tests
 │   │   ├── features/             # Gherkin feature files
-│   │   │   ├── auth/
-│   │   │   │   ├── login.feature
-│   │   │   │   ├── logout.feature
-│   │   │   │   └── registration.feature
-│   │   │   ├── cart/
-│   │   │   │   └── add_to_cart.feature
-│   │   │   ├── checkout/
-│   │   │   │   ├── guest_checkout.feature
-│   │   │   │   └── registered_checkout.feature
-│   │   │   └── e2e/
-│   │   │       └── complete_user_journey.feature
-│   │   ├── steps/                # Step definitions
+│   │   │   ├── auth/              # login, logout, registration
+│   │   │   ├── cart/              # add, remove, update
+│   │   │   ├── checkout/          # guest, registered, payment methods
+│   │   │   ├── products/          # search, filters, details
+│   │   │   └── e2e/               # complete user journey, guest purchase
+│   │   ├── steps/                 # Step definitions
 │   │   │   ├── auth.steps.ts
 │   │   │   ├── cart.steps.ts
 │   │   │   ├── checkout.steps.ts
 │   │   │   └── common.steps.ts
-│   │   └── support/              # Cucumber support files
-│   │       ├── world.ts          # Custom World (Playwright context)
-│   │       ├── hooks.ts          # Before/After hooks
-│   │       └── env.ts            # Environment setup
+│   │   └── support/               # Cucumber support
+│   │       ├── world.ts           # Custom World (Playwright context)
+│   │       ├── hooks.ts           # Before/After hooks
+│   │       └── env.ts             # Environment setup
 │   │
-│   ├── pages/                    # Page Object Model
-│   │   ├── base/
-│   │   │   └── BasePage.ts
-│   │   ├── components/           # Reusable components
-│   │   │   ├── HeaderComponent.ts
-│   │   │   ├── FooterComponent.ts
-│   │   │   ├── MiniCartComponent.ts
-│   │   │   └── SearchComponent.ts
-│   │   ├── HomePage.ts
-│   │   ├── LoginPage.ts
-│   │   ├── RegisterPage.ts
-│   │   ├── ProductListPage.ts
-│   │   ├── ProductDetailPage.ts
-│   │   ├── ShoppingCartPage.ts
-│   │   ├── CheckoutPage.ts
-│   │   ├── OrderConfirmationPage.ts
-│   │   └── MyAccountPage.ts
+│   ├── pages/                     # Page Object Model
+│   │   ├── base/BasePage.ts
+│   │   ├── components/            # Header, Footer, MiniCart, Search
+│   │   ├── HomePage, LoginPage, RegisterPage
+│   │   ├── ProductListPage, ProductDetailPage
+│   │   ├── ShoppingCartPage, CheckoutPage
+│   │   ├── OrderConfirmationPage, MyAccountPage
+│   │   └── ...
 │   │
-│   ├── tests/                    # Playwright Test Specs
-│   │   ├── auth/
-│   │   ├── cart/
-│   │   ├── checkout/
-│   │   ├── products/
-│   │   └── e2e/
-│   │
-│   ├── fixtures/                 # Test fixtures
-│   │   └── test.fixture.ts
-│   ├── utils/                    # Utility classes
-│   │   ├── Helper.ts
-│   │   ├── Logger.ts
-│   │   └── TestData.ts
-│   └── data/                     # Test data files
-│       ├── products.json
-│       ├── testData.json
-│       └── users.json
+│   ├── utils/                     # Helper, Logger, TestData
+│   └── data/                      # products.json, testData.json, users.json
 │
 ├── cucumber.cjs                  # Cucumber configuration
 ├── playwright.config.ts          # Playwright configuration
 ├── package.json
 ├── tsconfig.json
 ├── .env                          # Environment variables
-└── .vscode/
-    └── settings.json             # VSCode Cucumber paths
+└── .vscode/                      # Settings, tasks (e.g. run current feature)
 ```
 
 
@@ -312,24 +248,9 @@ Feature: User Login
     Then I should see element ".account"
 ```
 
-### Adding Playwright Tests
+### Adding more BDD scenarios
 
-1. Create test file in `src/tests/`
-2. Import fixtures and page objects
-3. Follow Page Object Model pattern
-
-**Example:**
-```typescript
-import { test, expect } from '../../fixtures/test.fixture';
-
-test.describe('Login Tests', () => {
-  test('TC-AUTH-002: Valid login', async ({ homePage, loginPage }) => {
-    await homePage.goto();
-    await loginPage.login('test@example.com', 'password123');
-    await expect(loginPage.accountLink).toBeVisible();
-  });
-});
-```
+Add new `.feature` files under `src/bdd/features/` and implement or reuse steps in `src/bdd/steps/`. Use page objects from `src/pages/` where step definitions need UI interactions.
 
 ### Code Quality
 
@@ -440,8 +361,8 @@ npx tsc --noEmit
 ## 🔄 CI/CD
 
 GitHub Actions workflow (`.github/workflows/playwright.yml`) includes:
-- ✅ Automated test execution on push/PR
-- ✅ Multi-browser testing
-- ✅ Test report generation
-- ✅ Scheduled daily runs
+- ✅ Run BDD tests on push/PR to main and develop
+- ✅ Chromium browser, env vars for base URL
+- ✅ Upload Cucumber report artifact
+- ✅ Scheduled daily runs (2 AM UTC)
 

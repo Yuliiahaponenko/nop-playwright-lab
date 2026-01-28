@@ -10,7 +10,9 @@
     "bdd:tag": "tsx ./node_modules/@cucumber/cucumber/bin/cucumber-js --config cucumber.cjs --tags",
     "test": "npx playwright test",
     "report": "npx playwright show-report test-reports",
-    "codegen": "npx playwright codegen"
+    "codegen": "npx playwright codegen",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\""
   },
   "dependencies": {
     "@cucumber/cucumber": "^12.2.0",

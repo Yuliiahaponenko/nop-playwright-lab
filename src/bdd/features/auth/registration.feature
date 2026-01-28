@@ -6,7 +6,7 @@ Feature: User Registration
     Given I go to url "https://nop-qa.portnov.com/register"
     When I fill element using css "#FirstName" with value "TestUser"
     And I fill element using css "#LastName" with value "TestLastName"
-    And I fill element using css "#Email" with value "testuser@example.com"
+    And I fill the registration email with a unique value
     And I fill element using css "#Password" with value "Test123!"
     And I fill element using css "#ConfirmPassword" with value "Test123!"
     And I click element using css "#register-button"
@@ -19,7 +19,7 @@ Feature: User Registration
     When I click element using css "#gender-female"
     And I fill element using css "#FirstName" with value "TestUser"
     And I fill element using css "#LastName" with value "TestLastName"
-    And I fill element using css "#Email" with value "testuser2@example.com"
+    And I fill the registration email with a unique value
     And I fill element using css "#Password" with value "Test123!"
     And I fill element using css "#ConfirmPassword" with value "Test123!"
     And I click element using css "#register-button"
@@ -30,7 +30,7 @@ Feature: User Registration
     Given I go to url "https://nop-qa.portnov.com/register"
     When I fill element using css "#FirstName" with value "TestUser"
     And I fill element using css "#LastName" with value "TestLastName"
-    And I fill element using css "#Email" with value "testuser3@example.com"
+    And I fill the registration email with a unique value
     And I fill element using css "#Password" with value "Test123!"
     And I fill element using css "#ConfirmPassword" with value "Test123!"
     And I click element using css "#Newsletter"

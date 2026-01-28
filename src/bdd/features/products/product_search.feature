@@ -16,7 +16,7 @@ Feature: Product Search
     And I click element using css "button[type='submit'].search-box-button"
     Then I wait for any element using css ".product-item" to be visible
     When I go to url "https://nop-qa.portnov.com"
-    And I fill element using css "#small-searchterms" with value "phone"
+    And I fill element using css "#small-searchterms" with value "laptop"
     And I click element using css "button[type='submit'].search-box-button"
     Then I wait for any element using css ".product-item" to be visible
 
