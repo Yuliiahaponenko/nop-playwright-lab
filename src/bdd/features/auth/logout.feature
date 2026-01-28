@@ -3,8 +3,7 @@ Feature: User Logout
 
   @bdd1
   Scenario: Logout successfully
-    Given I go to url "https://nop-qa.portnov.com"
-    And I click element using css "a[href*='/login']"
+    Given I go to url "https://nop-qa.portnov.com/login"
     And I fill element using css "#Email" with value "testuser@example.com"
     And I fill element using css "#Password" with value "Test123!"
     And I click element using css "button[type='submit'].login-button"
@@ -15,8 +14,7 @@ Feature: User Logout
 
   @bdd2
   Scenario: Verify protected pages inaccessible after logout
-    Given I go to url "https://nop-qa.portnov.com"
-    And I click element using css "a[href*='/login']"
+   Given I go to url "https://nop-qa.portnov.com/login"
     And I fill element using css "#Email" with value "testuser@example.com"
     And I fill element using css "#Password" with value "Test123!"
     And I click element using css "button[type='submit'].login-button"

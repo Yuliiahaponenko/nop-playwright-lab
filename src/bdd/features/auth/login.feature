@@ -3,8 +3,7 @@ Feature: User Login
 
   @bdd1
   Scenario: Login with valid credentials
-    Given I go to url "https://nop-qa.portnov.com"
-    When I click element using css "a[href*='/login']"
+    Given I go to url "https://nop-qa.portnov.com/login"
     And I fill element using css "#Email" with value "testuser@example.com"
     And I fill element using css "#Password" with value "Test123!"
     And I click element using css "button[type='submit'].login-button"
@@ -13,8 +12,7 @@ Feature: User Login
 
   @bdd2
   Scenario: Login with remember me checked
-    Given I go to url "https://nop-qa.portnov.com"
-    When I click element using css "a[href*='/login']"
+   Given I go to url "https://nop-qa.portnov.com/login"
     And I fill element using css "#Email" with value "testuser@example.com"
     And I fill element using css "#Password" with value "Test123!"
     And I click element using css "#RememberMe"
