@@ -12,7 +12,7 @@ module.exports = {
       snippetInterface: 'async-await'
     },
     publishQuiet: true,
-    paths: ['src/bdd/features/**/*.feature'],
+    // paths: only set when running "all" via npm run bdd; single-file runs pass path on CLI
     timeout: 120000
   }
 };

@@ -1,0 +1,20 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run current BDD feature file",
+      "type": "shell",
+      "command": "npm run bdd:file -- ${relativeFile}",
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {}
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+      },
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}

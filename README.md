@@ -161,11 +161,12 @@ npm run bdd:tag "@bdd3"
 npm run bdd
 ```
 
-**Run specific feature file:**
+**Run a single feature file (only that file runs):**
 ```bash
-npm run bdd -- src/bdd/features/auth/login.feature
-npm run bdd -- src/bdd/features/auth/registration.feature
+npm run bdd:file -- src/bdd/features/auth/logout.feature
+npm run bdd:file -- src/bdd/features/auth/login.feature
 ```
+Or in VS Code: open the `.feature` file → **Terminal → Run Task…** → **Run current BDD feature file**.
 
 ### 4.2 Running Playwright Tests
 
