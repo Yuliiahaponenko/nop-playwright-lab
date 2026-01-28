@@ -4,14 +4,19 @@ import { chromium, Browser, Page } from 'playwright';
 let browser: Browser;
 let page: Page;
 
-Given('I go to url {string}', async (url: string) => {
+// Register the step with all keywords so it works with Given, When, And, Then
+const goToUrl = async (url: string) => {
   if (!browser) {
     browser = await chromium.launch({ headless: false });
     const context = await browser.newContext();
     page = await context.newPage();
   }
   await page.goto(url);
-});
+};
+
+Given('I go to url {string}', goToUrl);
+When('I go to url {string}', goToUrl);
+Then('I go to url {string}', goToUrl);
 
 When('I click element using css {string}', async (selector: string) => {
   await page.locator(selector).click();
