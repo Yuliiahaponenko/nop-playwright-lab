@@ -1,32 +1,256 @@
 # nopCommerce Web Application Automation Framework
 
-🧪 **Playwright + TypeScript Framework** for comprehensive end-to-end testing of the nopCommerce e-commerce platform.
+🧪 **Playwright + Cucumber + TypeScript + Node.js Framework**
 
-## 📋 Overview
+This project is a robust end-to-end test automation framework for the **nopCommerce** e-commerce platform using:
 
-This framework provides automated testing for the nopCommerce web application using Playwright and TypeScript. It follows industry best practices with Page Object Model (POM), custom fixtures, and supports parallel execution across multiple browsers.
+✅ **Playwright** for browser automation  
+✅ **Cucumber** for BDD (Gherkin syntax)  
+✅ **TypeScript** for static typing  
+✅ **Node.js** as the runtime  
+✅ **Visual Studio Code** for development  
+✅ **Page Object Model (POM)** for maintainability
 
 **Application URL:** https://nop-qa.portnov.com
 
-## ✨ Features
+---
 
-- ✅ **Page Object Model (POM)** - Maintainable and reusable page objects
-- ✅ **TypeScript** - Type-safe test automation
-- ✅ **Custom Fixtures** - Pre-configured page objects and components
-- ✅ **Cross-Browser Testing** - Chrome, Firefox, Safari support
-- ✅ **Parallel Execution** - Fast test execution
-- ✅ **Comprehensive Reporting** - HTML, JSON, JUnit reports
-- ✅ **CI/CD Integration** - GitHub Actions workflow
-- ✅ **API Testing Support** - API client for backend validation
-- ✅ **Test Data Management** - Dynamic and static test data generators
+## 🚀 Quickstart
+
+### 1. Prerequisites
+
+#### Visual Studio Code
+Download and install from the [official website](https://code.visualstudio.com/).
+
+After installing, open VSCode and install the required extensions:
+
+**Playwright Test for VSCode**
+- Go to the Extensions tab (or press `Ctrl+Shift+X` / `Cmd+Shift+X`)
+- Search for: **Playwright Test for VSCode**
+- Publisher: **Microsoft** (microsoft.com)
+- Click **Install**
+
+**Cucumber**
+- Go to the Extensions tab (or press `Ctrl+Shift+X` / `Cmd+Shift+X`)
+- Search for: **Cucumber**
+- Publisher: **Cucumber** (cucumber.io)
+- Click **Install**
+
+#### Node.js
+
+**🪟 Windows**
+1. Go to the [official Node.js download page](https://nodejs.org/)
+2. Download the latest **LTS version**
+3. Run the installer
+4. Leave default settings checked (includes npm)
+5. Follow the prompts to complete installation
+6. Verify installation:
+   ```bash
+   node -v
+   npm -v
+   ```
+
+**🍎 macOS**
+1. Install Homebrew (if not installed):
+   ```bash
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+2. Install Node.js:
+   ```bash
+   brew install node
+   ```
+3. Verify installation:
+   ```bash
+   node -v
+   npm -v
+   ```
+
+#### Git
+
+**🪟 Windows**
+1. Go to the [Git downloads page](https://git-scm.com/downloads)
+2. Download and run the installer
+3. Choose default options unless you have specific needs
+4. After installation, open a new terminal (Command Prompt or Git Bash) and verify:
+   ```bash
+   git --version
+   ```
+
+**🍎 macOS**
+1. Check if Git is already installed:
+   ```bash
+   git --version
+   ```
+2. If not installed or needs update:
+   ```bash
+   brew install git
+   ```
+
+---
+
+### 2. Clone the Repository
+
+**[Option 1] In VSCode directly:**
+1. Click **Source Control** icon on the left
+2. Select **Clone Repository**
+3. Enter: `<your-repository-url>`
+4. Select a directory where the project will be located
+
+**[Option 2] Or, alternatively, in terminal:**
+```bash
+cd your-projects-directory
+git clone <your-repository-url>
+cd nop-playwright-lab
+```
+
+---
+
+### 3. Install Dependencies
+
+**🍎 macOS**
+
+In VSCode, open Terminal and run:
+```bash
+npm install
+```
+
+Install Playwright browsers:
+```bash
+npx playwright install
+```
+
+**🪟 Windows**
+
+1. Open **PowerShell as Admin** (Run as Administrator)
+2. Check current execution policy:
+   ```powershell
+   Get-ExecutionPolicy
+   ```
+3. If `Restricted`, change to `RemoteSigned`:
+   ```powershell
+   Set-ExecutionPolicy RemoteSigned
+   ```
+4. Validate that it changed:
+   ```powershell
+   Get-ExecutionPolicy
+   ```
+5. Then in VSCode, open Terminal and run:
+   ```bash
+   npm install
+   ```
+6. Install Playwright browsers:
+   ```bash
+   npx playwright install
+   ```
+
+---
+
+## 🧪 Running Tests
+
+### 4.1 Running BDD Tests
+
+**Run BDD tests with specific tag:**
+```bash
+npm run bdd:tag "@bdd1"
+npm run bdd:tag "@bdd2"
+npm run bdd:tag "@bdd3"
+```
+
+**Run all BDD tests:**
+```bash
+npm run bdd
+```
+
+**Run specific feature file:**
+```bash
+npm run bdd -- src/bdd/features/auth/login.feature
+npm run bdd -- src/bdd/features/auth/registration.feature
+```
+
+### 4.2 Running Playwright Tests
+
+**Run all Playwright tests:**
+```bash
+npx playwright test
+```
+
+**Run specific test file:**
+```bash
+npx playwright test src/tests/auth/login.spec.ts
+npx playwright test src/tests/cart/addToCart.spec.ts
+```
+
+**Run tests by name pattern:**
+```bash
+npx playwright test -g "login"
+npx playwright test -g "registration"
+```
+
+**Run with multiple patterns:**
+```bash
+npx playwright test -g "login" -g "valid"
+```
+
+**Exclude tests:**
+```bash
+npx playwright test --grep-invert "excluded partial name"
+```
+
+**Run in headed mode (visible browser):**
+```bash
+npx playwright test --headed
+```
+
+**Run in debug mode:**
+```bash
+npx playwright test --debug
+```
+
+### 4.3 Playwright Report
+
+**View HTML report:**
+```bash
+npx playwright show-report
+```
+
+---
 
 ## 🏗️ Framework Structure
 
 ```
-playwright-nopcommerce-framework/
+nop-playwright-lab/
 ├── src/
+│   ├── bdd/                      # BDD Cucumber Tests
+│   │   ├── features/             # Gherkin feature files
+│   │   │   ├── auth/
+│   │   │   │   ├── login.feature
+│   │   │   │   ├── logout.feature
+│   │   │   │   └── registration.feature
+│   │   │   ├── cart/
+│   │   │   │   └── add_to_cart.feature
+│   │   │   ├── checkout/
+│   │   │   │   ├── guest_checkout.feature
+│   │   │   │   └── registered_checkout.feature
+│   │   │   └── e2e/
+│   │   │       └── complete_user_journey.feature
+│   │   ├── steps/                # Step definitions
+│   │   │   ├── auth.steps.ts
+│   │   │   ├── cart.steps.ts
+│   │   │   ├── checkout.steps.ts
+│   │   │   └── common.steps.ts
+│   │   └── support/              # Cucumber support files
+│   │       ├── world.ts          # Custom World (Playwright context)
+│   │       ├── hooks.ts          # Before/After hooks
+│   │       └── env.ts            # Environment setup
+│   │
 │   ├── pages/                    # Page Object Model
-│   │   ├── base/BasePage.ts
+│   │   ├── base/
+│   │   │   └── BasePage.ts
+│   │   ├── components/           # Reusable components
+│   │   │   ├── HeaderComponent.ts
+│   │   │   ├── FooterComponent.ts
+│   │   │   ├── MiniCartComponent.ts
+│   │   │   └── SearchComponent.ts
 │   │   ├── HomePage.ts
 │   │   ├── LoginPage.ts
 │   │   ├── RegisterPage.ts
@@ -35,277 +259,303 @@ playwright-nopcommerce-framework/
 │   │   ├── ShoppingCartPage.ts
 │   │   ├── CheckoutPage.ts
 │   │   ├── OrderConfirmationPage.ts
-│   │   ├── MyAccountPage.ts
-│   │   └── components/           # Reusable components
+│   │   └── MyAccountPage.ts
 │   │
-│   ├── tests/                    # Test Specifications
-│   │   ├── auth/                 # Authentication tests
-│   │   ├── products/             # Product tests
-│   │   ├── cart/                 # Shopping cart tests
-│   │   ├── checkout/             # Checkout tests
-│   │   └── e2e/                  # End-to-end tests
+│   ├── tests/                    # Playwright Test Specs
+│   │   ├── auth/
+│   │   ├── cart/
+│   │   ├── checkout/
+│   │   ├── products/
+│   │   └── e2e/
 │   │
 │   ├── fixtures/                 # Test fixtures
+│   │   └── test.fixture.ts
 │   ├── utils/                    # Utility classes
-│   ├── api/                      # API client
+│   │   ├── Helper.ts
+│   │   ├── Logger.ts
+│   │   └── TestData.ts
 │   └── data/                     # Test data files
+│       ├── products.json
+│       ├── testData.json
+│       └── users.json
 │
+├── cucumber.cjs                  # Cucumber configuration
 ├── playwright.config.ts          # Playwright configuration
 ├── package.json
 ├── tsconfig.json
-└── .env                          # Environment variables
+├── .env                          # Environment variables
+└── .vscode/
+    └── settings.json             # VSCode Cucumber paths
 ```
 
-## 🚀 Quick Start
+---
 
-### Prerequisites
+## 📝 Test Coverage
 
-- **Node.js** 18+ ([Download](https://nodejs.org/))
-- **npm** (comes with Node.js)
-- **Git** ([Download](https://git-scm.com/))
+### BDD Features (Cucumber)
 
-### Installation
+**Authentication** (`src/bdd/features/auth/`)
+- ✅ User Login - Valid/Invalid credentials
+- ✅ User Registration - New account creation
+- ✅ User Logout
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd nop-playwright-lab
-   ```
+**Shopping Cart** (`src/bdd/features/cart/`)
+- ✅ Add products to cart
+- ✅ Update cart quantities
+- ✅ Remove items from cart
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+**Checkout** (`src/bdd/features/checkout/`)
+- ✅ Guest Checkout - Complete purchase flow
+- ✅ Registered User Checkout
 
-3. **Install Playwright browsers**
-   ```bash
-   npx playwright install --with-deps
-   ```
+**End-to-End** (`src/bdd/features/e2e/`)
+- ✅ Complete User Journey - Registration to Order Completion
 
-4. **Configure environment variables**
-   ```bash
-   cp .env.example .env
-   # Edit .env with your configuration
-   ```
+### Playwright Test Specs
 
-## 🧪 Running Tests
-
-### Run all tests
-```bash
-npm test
-```
-
-### Run tests in UI mode
-```bash
-npm run test:ui
-```
-
-### Run tests in headed mode
-```bash
-npm run test:headed
-```
-
-### Run tests in debug mode
-```bash
-npm run test:debug
-```
-
-### Run tests for specific browser
-```bash
-npm run test:chromium
-npm run test:firefox
-npm run test:webkit
-```
-
-### Run specific test suite
-```bash
-npm run test:auth          # Authentication tests
-npm run test:products      # Product tests
-npm run test:cart          # Cart tests
-npm run test:checkout      # Checkout tests
-npm run test:e2e           # E2E tests
-```
-
-### Run specific test file
-```bash
-npx playwright test src/tests/auth/registration.spec.ts
-```
-
-### Run tests matching a pattern
-```bash
-npx playwright test -g "registration"
-```
-
-## 📊 Test Reports
-
-### View HTML report
-```bash
-npm run report
-```
-
-Reports are generated in the `playwright-report/` directory after test execution.
-
-## 📝 Test Cases Coverage
-
-### Critical Priority Tests (MUST AUTOMATE)
-
-#### Authentication (4 tests)
-- ✅ TC-AUTH-001: User Registration - New Account Creation
+**Authentication** (`src/tests/auth/`)
+- ✅ TC-AUTH-001: User Registration
 - ✅ TC-AUTH-002: User Login - Valid Credentials
 - ✅ TC-AUTH-003: User Login - Invalid Credentials
 - ✅ TC-AUTH-004: User Logout
 
-#### Products (3 tests)
-- ✅ TC-PROD-001: Product Search - Keyword Search
-- ✅ TC-PROD-002: Product Filters - Price Range Filter
-- ✅ TC-PROD-003: Product Detail Page - View Product Details
+**Products** (`src/tests/products/`)
+- ✅ TC-PROD-001: Product Search
+- ✅ TC-PROD-002: Product Filters
+- ✅ TC-PROD-003: Product Details
 
-#### Shopping Cart (4 tests)
-- ✅ TC-CART-001: Add Product to Cart from Product List
-- ✅ TC-CART-002: Add Product to Cart from Product Detail Page
-- ✅ TC-CART-003: Update Cart - Change Quantity
-- ✅ TC-CART-004: Remove Product from Cart
+**Shopping Cart** (`src/tests/cart/`)
+- ✅ TC-CART-001: Add to Cart from Product List
+- ✅ TC-CART-002: Add to Cart from Product Detail
+- ✅ TC-CART-003: Update Cart Quantity
+- ✅ TC-CART-004: Remove from Cart
 
-#### Checkout (3 tests)
-- ✅ TC-CHECKOUT-001: Guest Checkout - Complete Purchase
+**Checkout** (`src/tests/checkout/`)
+- ✅ TC-CHECKOUT-001: Guest Checkout
 - ✅ TC-CHECKOUT-002: Registered User Checkout
-- ✅ TC-CHECKOUT-003: Checkout Validation - Required Fields
+- ✅ TC-CHECKOUT-003: Payment Methods
 
-#### End-to-End (2 tests)
-- ✅ TC-E2E-001: Complete User Journey - New User to Order Completion
-- ✅ TC-E2E-002: Guest User Purchase Flow
+**End-to-End** (`src/tests/e2e/`)
+- ✅ TC-E2E-001: Complete User Journey
+- ✅ TC-E2E-002: Guest Purchase Flow
 
-**Total: 16 critical test cases implemented**
+---
 
-## 🛠️ Development
+## 🔧 Configuration
 
-### Code Quality
+### Cucumber Configuration (`cucumber.cjs`)
 
-**Linting**
-```bash
-npm run lint
+Configure Cucumber settings:
+```javascript
+module.exports = {
+  default: {
+    requireModule: ['tsx/esm'],
+    require: [
+      'src/bdd/support/**/*.ts',
+      'src/bdd/steps/**/*.ts'
+    ],
+    paths: ['src/bdd/features/**/*.feature'],
+    timeout: 120000
+  }
+};
 ```
 
-**Formatting**
-```bash
-npm run format
+### Playwright Configuration (`playwright.config.ts`)
+
+Edit to customize:
+- Browser projects (Chromium, Firefox, WebKit)
+- Test timeout and retries
+- Screenshot/video settings
+- Reporter configuration
+- Parallel execution
+
+### Environment Variables (`.env`)
+
+```env
+BASE_URL=https://nop-qa.portnov.com
 ```
 
-### Adding New Tests
+### VSCode Cucumber Settings (`.vscode/settings.json`)
 
-1. Create test file in appropriate directory under `src/tests/`
+```json
+{
+  "cucumber.features": ["src/bdd/features/**/*.feature"],
+  "cucumber.glue": ["src/bdd/steps/**/*.ts", "src/bdd/support/**/*.ts"]
+}
+```
+
+---
+
+## 🛠️ Development Guide
+
+### Adding BDD Tests
+
+1. Create a `.feature` file in `src/bdd/features/`
+2. Write scenarios using Gherkin syntax
+3. Add step definitions in `src/bdd/steps/`
+4. Use Page Objects for interactions
+
+**Example Feature:**
+```gherkin
+@bdd1
+Feature: User Login
+  Scenario: Successful login with valid credentials
+    Given I go to url "https://nop-qa.portnov.com"
+    When I click on "a[href='/login']"
+    And I type "test@example.com" into "#Email"
+    And I type "password123" into "#Password"
+    And I click on ".login-button"
+    Then I should see element ".account"
+```
+
+### Adding Playwright Tests
+
+1. Create test file in `src/tests/`
 2. Import fixtures and page objects
-3. Use Page Object Model pattern
-4. Follow existing test structure
+3. Follow Page Object Model pattern
 
 **Example:**
 ```typescript
 import { test, expect } from '../../fixtures/test.fixture';
-import { TestData } from '../../utils/TestData';
 
-test.describe('My New Test Suite', () => {
-  test('My test case', async ({ homePage, loginPage }) => {
+test.describe('Login Tests', () => {
+  test('TC-AUTH-002: Valid login', async ({ homePage, loginPage }) => {
     await homePage.goto();
-    await homePage.clickLogin();
-    // ... test steps
+    await loginPage.login('test@example.com', 'password123');
+    await expect(loginPage.accountLink).toBeVisible();
   });
 });
 ```
 
-## 🔧 Configuration
+### Code Quality
 
-### Playwright Configuration
-
-Edit `playwright.config.ts` to customize:
-- Browser projects
-- Test timeout
-- Screenshot/video settings
-- Reporter configuration
-- Parallel execution settings
-
-### Environment Variables
-
-Edit `.env` file:
-```env
-BASE_URL=https://nop-qa.portnov.com
-API_BASE_URL=https://nop-qa.portnov.com/api
+**Linting:**
+```bash
+npm run lint
 ```
 
-## 📦 Dependencies
+**Formatting:**
+```bash
+npm run format
+```
 
-### Core Dependencies
-- `@playwright/test` - Playwright test framework
-- `typescript` - TypeScript compiler
-- `dotenv` - Environment variable management
+---
 
-### Dev Dependencies
-- `@types/node` - Node.js type definitions
-- `eslint` - Code linting
-- `prettier` - Code formatting
+## 📚 More
 
-## 🔄 CI/CD Integration
+### Codegen (Generate Tests)
 
-The framework includes a GitHub Actions workflow (`.github/workflows/playwright.yml`) that:
-- Runs tests on push/PR to main/develop branches
-- Executes tests on multiple browsers (Chromium, Firefox, WebKit)
-- Generates and uploads test reports
-- Runs scheduled tests daily
+```bash
+npx playwright codegen https://nop-qa.portnov.com
+```
 
-## 📚 Documentation
+### Playwright Documentation
+
+- [Playwright Official Docs](https://playwright.dev/)
+- [Cucumber.js Documentation](https://cucumber.io/docs/cucumber/)
+- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 
 ### Key Locators Reference
 
-**Common Locators:**
-- Register Link: `a[href="/register"]`
-- Login Link: `a[href="/login"]`
-- Cart Link: `a[href="/cart"]`
-- Search Box: `#small-searchterms`
+**Common Elements:**
+- Register: `a[href="/register"]`
+- Login: `a[href="/login"]`
+- Cart: `a[href="/cart"]`
+- Search: `#small-searchterms`
+- Account: `.account`
 
 **Product Page:**
-- Product Title: `.product-name h1`
+- Add to Cart: `#add-to-cart-button-{id}`
 - Price: `.product-price span`
-- Add to Cart: `#add-to-cart-button`
+- Title: `.product-name h1`
 
 **Checkout:**
-- Billing First Name: `#BillingNewAddress_FirstName`
+- First Name: `#BillingNewAddress_FirstName`
 - Payment Method: `input[value='Payments.Manual']`
-- Confirm Button: `.confirm-order-next-step-button`
+- Confirm Order: `.confirm-order-next-step-button`
+
+---
 
 ## 🎯 Best Practices
 
-1. **Use Page Object Model** - All page interactions through page objects
-2. **Generate Unique Test Data** - Use `TestData` utility for dynamic data
-3. **Wait for Elements** - Use Playwright's auto-wait, avoid hard waits
-4. **Keep Tests Independent** - Each test should be able to run standalone
-5. **Use Descriptive Test Names** - Follow TC-ID naming convention
-6. **Handle Async Operations** - Properly await all async operations
+1. ✅ **Use Page Object Model** - Keep selectors and actions in page classes
+2. ✅ **Write Descriptive Scenarios** - Clear Given-When-Then structure
+3. ✅ **Keep Tests Independent** - Each test should run standalone
+4. ✅ **Use Playwright Auto-Wait** - Avoid explicit waits
+5. ✅ **Generate Unique Data** - Use `TestData` utility for test data
+6. ✅ **Tag Your Features** - Use `@bdd1`, `@bdd2`, etc. for selective runs
+
+---
 
 ## 🐛 Troubleshooting
 
-### Tests failing with timeout
-- Increase timeout in `playwright.config.ts`
-- Check network connectivity
-- Verify application is accessible
+### BDD Tests Not Recognized
+- Verify `.vscode/settings.json` has correct paths
+- Restart VSCode after installing Cucumber extension
+- Check `cucumber.cjs` configuration
 
-### Browser not launching
-- Run `npx playwright install --with-deps`
-- Check system dependencies
+### Browser Not Launching
+```bash
+npx playwright install --with-deps
+```
 
-### TypeScript errors
-- Run `npm install` to ensure dependencies are installed
+### Tests Timing Out
+- Increase timeout in `src/bdd/support/hooks.ts`
+- Check `browser.launch()` timeout in `src/bdd/support/world.ts`
+- Verify network connectivity to test URL
+
+### TypeScript Errors
+```bash
+npm install
+npx tsc --noEmit
+```
+
+### Module Resolution Issues
+- Ensure `tsx` is installed: `npm install tsx`
 - Check `tsconfig.json` configuration
+- Verify `cucumber.cjs` uses correct module loader
+
+---
+
+## 📦 Dependencies
+
+**Core:**
+- `@playwright/test` - Browser automation
+- `@cucumber/cucumber` - BDD test runner
+- `typescript` - Static typing
+- `tsx` - TypeScript execution
+- `dotenv` - Environment variables
+
+**Dev:**
+- `@types/node` - Node.js types
+- `eslint` - Code linting
+- `prettier` - Code formatting
+
+---
+
+## 🔄 CI/CD
+
+GitHub Actions workflow (`.github/workflows/playwright.yml`) includes:
+- ✅ Automated test execution on push/PR
+- ✅ Multi-browser testing
+- ✅ Test report generation
+- ✅ Scheduled daily runs
+
+---
 
 ## 📄 License
 
 ISC
 
-## 👥 Contributors
+---
 
-- Framework created based on test plan v1.0
-- Last Updated: 2026-01-26
+## 👥 About
+
+**Framework Version:** 1.0.0  
+**Application:** nopCommerce Demo Store  
+**URL:** https://nop-qa.portnov.com  
+**Last Updated:** January 2026
 
 ---
 
-**Status:** ✅ Ready for Implementation  
-**Framework Version:** 1.0.0  
-**Test Plan Version:** 1.0
+**Status:** ✅ Ready for Testing
