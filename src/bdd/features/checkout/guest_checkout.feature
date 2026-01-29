@@ -7,9 +7,7 @@ Feature: Guest Checkout
     When I click element using css "#add-to-cart-button-4"
     And I wait for any element using css ".bar-notification.success" to be visible
     And I go to url "https://nop-qa.portnov.com/cart"
-    When I click element using css "#termsofservice"
-    And I go to url "https://nop-qa.portnov.com/onepagecheckout"
-    Then I wait for any element using css "input[value='CheckoutAsGuest']" to be visible
+    When I click element using css "button:has-text('Checkout')"
     And I click element using css "input[value='CheckoutAsGuest']"
     When I fill element using css "#BillingNewAddress_FirstName" with value "John"
     And I fill element using css "#BillingNewAddress_LastName" with value "Doe"
@@ -44,9 +42,7 @@ Feature: Guest Checkout
     When I click element using css "#add-to-cart-button-4"
     And I wait for any element using css ".bar-notification.success" to be visible
     And I go to url "https://nop-qa.portnov.com/cart"
-    When I click element using css "#termsofservice"
-    And I go to url "https://nop-qa.portnov.com/onepagecheckout"
-    Then I wait for any element using css "input[value='CheckoutAsGuest']" to be visible
+    When I click element using css "button:has-text('Checkout')"
     And I click element using css "input[value='CheckoutAsGuest']"
     When I fill element using css "#BillingNewAddress_FirstName" with value "John"
     And I fill element using css "#BillingNewAddress_LastName" with value "Doe"

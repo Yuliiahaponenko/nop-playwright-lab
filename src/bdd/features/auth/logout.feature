@@ -1,7 +1,7 @@
 @bdd
 Feature: User Logout
 
-  @bdd1
+  @bdd1 
   Scenario: Logout successfully
     Given I go to url "https://nop-qa.portnov.com/login"
     And I fill element using css "#Email" with value "testuser@example.com"
