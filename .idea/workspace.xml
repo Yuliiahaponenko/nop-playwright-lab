@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57fcc214-7d5e-4fb4-b5bd-e5417140fe32" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/nop-selenium-lab/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/nop-selenium-lab/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bdd/features/auth/logout.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/bdd/features/auth/logout.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bdd/features/checkout/guest_checkout.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/bdd/features/checkout/guest_checkout.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdd/auth/login.feature" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bdd/step-definitions/actions.steps.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,24 +16,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Yuliiahaponenko"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Yuliiahaponenko&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:Yuliiahaponenko/nop-playwright-lab.git",
-    "accountId": "df4c1d73-80cb-4619-8345-149071685eb2"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:Yuliiahaponenko/nop-playwright-lab.git&quot;,
+    &quot;accountId&quot;: &quot;df4c1d73-80cb-4619-8345-149071685eb2&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="38rMWSuwk0BwStjvn3Vdpsl5F5T" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -46,7 +45,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "delete-unused-files",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/yuliiahaponenko/nop-playwright-lab"
   }
